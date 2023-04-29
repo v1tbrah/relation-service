@@ -14,97 +14,39 @@ type Storage struct {
 	mock.Mock
 }
 
-// CreateCity provides a mock function with given fields: ctx, city
-func (_m *Storage) CreateCity(ctx context.Context, city model.City) (int64, error) {
-	ret := _m.Called(ctx, city)
+// AddFriend provides a mock function with given fields: ctx, userID, friendID
+func (_m *Storage) AddFriend(ctx context.Context, userID int64, friendID int64) error {
+	ret := _m.Called(ctx, userID, friendID)
 
-	var r0 int64
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, model.City) (int64, error)); ok {
-		return rf(ctx, city)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context, model.City) int64); ok {
-		r0 = rf(ctx, city)
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, int64, int64) error); ok {
+		r0 = rf(ctx, userID, friendID)
 	} else {
-		r0 = ret.Get(0).(int64)
+		r0 = ret.Error(0)
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, model.City) error); ok {
-		r1 = rf(ctx, city)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
+	return r0
 }
 
-// CreateInterest provides a mock function with given fields: ctx, interest
-func (_m *Storage) CreateInterest(ctx context.Context, interest model.Interest) (int64, error) {
-	ret := _m.Called(ctx, interest)
+// GetFriends provides a mock function with given fields: ctx, userID, direction, userOffsetID, limit
+func (_m *Storage) GetFriends(ctx context.Context, userID int64, direction model.Direction, userOffsetID int64, limit int64) ([]int64, error) {
+	ret := _m.Called(ctx, userID, direction, userOffsetID, limit)
 
-	var r0 int64
+	var r0 []int64
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, model.Interest) (int64, error)); ok {
-		return rf(ctx, interest)
+	if rf, ok := ret.Get(0).(func(context.Context, int64, model.Direction, int64, int64) ([]int64, error)); ok {
+		return rf(ctx, userID, direction, userOffsetID, limit)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, model.Interest) int64); ok {
-		r0 = rf(ctx, interest)
-	} else {
-		r0 = ret.Get(0).(int64)
-	}
-
-	if rf, ok := ret.Get(1).(func(context.Context, model.Interest) error); ok {
-		r1 = rf(ctx, interest)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// CreateUser provides a mock function with given fields: ctx, user
-func (_m *Storage) CreateUser(ctx context.Context, user model.User) (int64, error) {
-	ret := _m.Called(ctx, user)
-
-	var r0 int64
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, model.User) (int64, error)); ok {
-		return rf(ctx, user)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context, model.User) int64); ok {
-		r0 = rf(ctx, user)
-	} else {
-		r0 = ret.Get(0).(int64)
-	}
-
-	if rf, ok := ret.Get(1).(func(context.Context, model.User) error); ok {
-		r1 = rf(ctx, user)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// GetAllCities provides a mock function with given fields: ctx
-func (_m *Storage) GetAllCities(ctx context.Context) ([]model.City, error) {
-	ret := _m.Called(ctx)
-
-	var r0 []model.City
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context) ([]model.City, error)); ok {
-		return rf(ctx)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context) []model.City); ok {
-		r0 = rf(ctx)
+	if rf, ok := ret.Get(0).(func(context.Context, int64, model.Direction, int64, int64) []int64); ok {
+		r0 = rf(ctx, userID, direction, userOffsetID, limit)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]model.City)
+			r0 = ret.Get(0).([]int64)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context) error); ok {
-		r1 = rf(ctx)
+	if rf, ok := ret.Get(1).(func(context.Context, int64, model.Direction, int64, int64) error); ok {
+		r1 = rf(ctx, userID, direction, userOffsetID, limit)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -112,102 +54,18 @@ func (_m *Storage) GetAllCities(ctx context.Context) ([]model.City, error) {
 	return r0, r1
 }
 
-// GetAllInterests provides a mock function with given fields: ctx
-func (_m *Storage) GetAllInterests(ctx context.Context) ([]model.Interest, error) {
-	ret := _m.Called(ctx)
+// RemoveFriend provides a mock function with given fields: ctx, userID, friendID
+func (_m *Storage) RemoveFriend(ctx context.Context, userID int64, friendID int64) error {
+	ret := _m.Called(ctx, userID, friendID)
 
-	var r0 []model.Interest
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context) ([]model.Interest, error)); ok {
-		return rf(ctx)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context) []model.Interest); ok {
-		r0 = rf(ctx)
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, int64, int64) error); ok {
+		r0 = rf(ctx, userID, friendID)
 	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]model.Interest)
-		}
+		r0 = ret.Error(0)
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context) error); ok {
-		r1 = rf(ctx)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// GetCity provides a mock function with given fields: ctx, id
-func (_m *Storage) GetCity(ctx context.Context, id int64) (model.City, error) {
-	ret := _m.Called(ctx, id)
-
-	var r0 model.City
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, int64) (model.City, error)); ok {
-		return rf(ctx, id)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context, int64) model.City); ok {
-		r0 = rf(ctx, id)
-	} else {
-		r0 = ret.Get(0).(model.City)
-	}
-
-	if rf, ok := ret.Get(1).(func(context.Context, int64) error); ok {
-		r1 = rf(ctx, id)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// GetInterest provides a mock function with given fields: ctx, id
-func (_m *Storage) GetInterest(ctx context.Context, id int64) (model.Interest, error) {
-	ret := _m.Called(ctx, id)
-
-	var r0 model.Interest
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, int64) (model.Interest, error)); ok {
-		return rf(ctx, id)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context, int64) model.Interest); ok {
-		r0 = rf(ctx, id)
-	} else {
-		r0 = ret.Get(0).(model.Interest)
-	}
-
-	if rf, ok := ret.Get(1).(func(context.Context, int64) error); ok {
-		r1 = rf(ctx, id)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// GetUser provides a mock function with given fields: ctx, id
-func (_m *Storage) GetUser(ctx context.Context, id int64) (model.User, error) {
-	ret := _m.Called(ctx, id)
-
-	var r0 model.User
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, int64) (model.User, error)); ok {
-		return rf(ctx, id)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context, int64) model.User); ok {
-		r0 = rf(ctx, id)
-	} else {
-		r0 = ret.Get(0).(model.User)
-	}
-
-	if rf, ok := ret.Get(1).(func(context.Context, int64) error); ok {
-		r1 = rf(ctx, id)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
+	return r0
 }
 
 type mockConstructorTestingTNewStorage interface {
