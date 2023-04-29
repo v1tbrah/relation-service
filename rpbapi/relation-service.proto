@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package pbapi;
+package rpbapi;
 
-option go_package = "relation-service/pbapi";
+option go_package = "social_network/post-service/rpbapi";
 
 service UserService {
   rpc AddFriend(AddFriendRequest) returns (Empty) {}

@@ -4,7 +4,7 @@
 // - protoc             v3.14.0
 // source: relation-service.proto
 
-package pbapi
+package rpbapi
 
 import (
 	context "context"
@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	UserService_AddFriend_FullMethodName    = "/pbapi.UserService/AddFriend"
-	UserService_RemoveFriend_FullMethodName = "/pbapi.UserService/RemoveFriend"
-	UserService_GetFriends_FullMethodName   = "/pbapi.UserService/GetFriends"
+	UserService_AddFriend_FullMethodName    = "/rpbapi.UserService/AddFriend"
+	UserService_RemoveFriend_FullMethodName = "/rpbapi.UserService/RemoveFriend"
+	UserService_GetFriends_FullMethodName   = "/rpbapi.UserService/GetFriends"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -162,7 +162,7 @@ func _UserService_GetFriends_Handler(srv interface{}, ctx context.Context, dec f
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var UserService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "pbapi.UserService",
+	ServiceName: "rpbapi.UserService",
 	HandlerType: (*UserServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

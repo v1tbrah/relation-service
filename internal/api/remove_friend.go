@@ -4,13 +4,12 @@ import (
 	"context"
 
 	"github.com/rs/zerolog/log"
+	"gitlab.com/pet-pr-social-network/relation-service/rpbapi"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-
-	"gitlab.com/pet-pr-social-network/relation-service/pbapi"
 )
 
-func (a *API) RemoveFriend(ctx context.Context, req *pbapi.RemoveFriendRequest) (*pbapi.Empty, error) {
+func (a *API) RemoveFriend(ctx context.Context, req *rpbapi.RemoveFriendRequest) (*rpbapi.Empty, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, ErrEmptyRequest.Error())
 	}
@@ -21,5 +20,5 @@ func (a *API) RemoveFriend(ctx context.Context, req *pbapi.RemoveFriendRequest) 
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 
-	return &pbapi.Empty{}, nil
+	return &rpbapi.Empty{}, nil
 }
