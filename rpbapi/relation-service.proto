@@ -4,7 +4,7 @@ package rpbapi;
 
 option go_package = "social_network/post-service/rpbapi";
 
-service UserService {
+service RelationService {
   rpc AddFriend(AddFriendRequest) returns (Empty) {}
   rpc RemoveFriend(RemoveFriendRequest) returns (Empty) {}
   rpc GetFriends(GetFriendsRequest) returns (GetFriendsResponse) {}

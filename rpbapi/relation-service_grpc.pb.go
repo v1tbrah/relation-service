@@ -19,163 +19,163 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	UserService_AddFriend_FullMethodName    = "/rpbapi.UserService/AddFriend"
-	UserService_RemoveFriend_FullMethodName = "/rpbapi.UserService/RemoveFriend"
-	UserService_GetFriends_FullMethodName   = "/rpbapi.UserService/GetFriends"
+	RelationService_AddFriend_FullMethodName    = "/rpbapi.RelationService/AddFriend"
+	RelationService_RemoveFriend_FullMethodName = "/rpbapi.RelationService/RemoveFriend"
+	RelationService_GetFriends_FullMethodName   = "/rpbapi.RelationService/GetFriends"
 )
 
-// UserServiceClient is the client API for UserService service.
+// RelationServiceClient is the client API for RelationService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type UserServiceClient interface {
+type RelationServiceClient interface {
 	AddFriend(ctx context.Context, in *AddFriendRequest, opts ...grpc.CallOption) (*Empty, error)
 	RemoveFriend(ctx context.Context, in *RemoveFriendRequest, opts ...grpc.CallOption) (*Empty, error)
 	GetFriends(ctx context.Context, in *GetFriendsRequest, opts ...grpc.CallOption) (*GetFriendsResponse, error)
 }
 
-type userServiceClient struct {
+type relationServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
-	return &userServiceClient{cc}
+func NewRelationServiceClient(cc grpc.ClientConnInterface) RelationServiceClient {
+	return &relationServiceClient{cc}
 }
 
-func (c *userServiceClient) AddFriend(ctx context.Context, in *AddFriendRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *relationServiceClient) AddFriend(ctx context.Context, in *AddFriendRequest, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, UserService_AddFriend_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RelationService_AddFriend_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) RemoveFriend(ctx context.Context, in *RemoveFriendRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *relationServiceClient) RemoveFriend(ctx context.Context, in *RemoveFriendRequest, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, UserService_RemoveFriend_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RelationService_RemoveFriend_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) GetFriends(ctx context.Context, in *GetFriendsRequest, opts ...grpc.CallOption) (*GetFriendsResponse, error) {
+func (c *relationServiceClient) GetFriends(ctx context.Context, in *GetFriendsRequest, opts ...grpc.CallOption) (*GetFriendsResponse, error) {
 	out := new(GetFriendsResponse)
-	err := c.cc.Invoke(ctx, UserService_GetFriends_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RelationService_GetFriends_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// UserServiceServer is the server API for UserService service.
-// All implementations must embed UnimplementedUserServiceServer
+// RelationServiceServer is the server API for RelationService service.
+// All implementations must embed UnimplementedRelationServiceServer
 // for forward compatibility
-type UserServiceServer interface {
+type RelationServiceServer interface {
 	AddFriend(context.Context, *AddFriendRequest) (*Empty, error)
 	RemoveFriend(context.Context, *RemoveFriendRequest) (*Empty, error)
 	GetFriends(context.Context, *GetFriendsRequest) (*GetFriendsResponse, error)
-	mustEmbedUnimplementedUserServiceServer()
+	mustEmbedUnimplementedRelationServiceServer()
 }
 
-// UnimplementedUserServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedUserServiceServer struct {
+// UnimplementedRelationServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedRelationServiceServer struct {
 }
 
-func (UnimplementedUserServiceServer) AddFriend(context.Context, *AddFriendRequest) (*Empty, error) {
+func (UnimplementedRelationServiceServer) AddFriend(context.Context, *AddFriendRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddFriend not implemented")
 }
-func (UnimplementedUserServiceServer) RemoveFriend(context.Context, *RemoveFriendRequest) (*Empty, error) {
+func (UnimplementedRelationServiceServer) RemoveFriend(context.Context, *RemoveFriendRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveFriend not implemented")
 }
-func (UnimplementedUserServiceServer) GetFriends(context.Context, *GetFriendsRequest) (*GetFriendsResponse, error) {
+func (UnimplementedRelationServiceServer) GetFriends(context.Context, *GetFriendsRequest) (*GetFriendsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFriends not implemented")
 }
-func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
+func (UnimplementedRelationServiceServer) mustEmbedUnimplementedRelationServiceServer() {}
 
-// UnsafeUserServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to UserServiceServer will
+// UnsafeRelationServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RelationServiceServer will
 // result in compilation errors.
-type UnsafeUserServiceServer interface {
-	mustEmbedUnimplementedUserServiceServer()
+type UnsafeRelationServiceServer interface {
+	mustEmbedUnimplementedRelationServiceServer()
 }
 
-func RegisterUserServiceServer(s grpc.ServiceRegistrar, srv UserServiceServer) {
-	s.RegisterService(&UserService_ServiceDesc, srv)
+func RegisterRelationServiceServer(s grpc.ServiceRegistrar, srv RelationServiceServer) {
+	s.RegisterService(&RelationService_ServiceDesc, srv)
 }
 
-func _UserService_AddFriend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RelationService_AddFriend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddFriendRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).AddFriend(ctx, in)
+		return srv.(RelationServiceServer).AddFriend(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_AddFriend_FullMethodName,
+		FullMethod: RelationService_AddFriend_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).AddFriend(ctx, req.(*AddFriendRequest))
+		return srv.(RelationServiceServer).AddFriend(ctx, req.(*AddFriendRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_RemoveFriend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RelationService_RemoveFriend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RemoveFriendRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).RemoveFriend(ctx, in)
+		return srv.(RelationServiceServer).RemoveFriend(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_RemoveFriend_FullMethodName,
+		FullMethod: RelationService_RemoveFriend_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).RemoveFriend(ctx, req.(*RemoveFriendRequest))
+		return srv.(RelationServiceServer).RemoveFriend(ctx, req.(*RemoveFriendRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_GetFriends_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RelationService_GetFriends_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetFriendsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).GetFriends(ctx, in)
+		return srv.(RelationServiceServer).GetFriends(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_GetFriends_FullMethodName,
+		FullMethod: RelationService_GetFriends_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetFriends(ctx, req.(*GetFriendsRequest))
+		return srv.(RelationServiceServer).GetFriends(ctx, req.(*GetFriendsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
+// RelationService_ServiceDesc is the grpc.ServiceDesc for RelationService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var UserService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "rpbapi.UserService",
-	HandlerType: (*UserServiceServer)(nil),
+var RelationService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "rpbapi.RelationService",
+	HandlerType: (*RelationServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "AddFriend",
-			Handler:    _UserService_AddFriend_Handler,
+			Handler:    _RelationService_AddFriend_Handler,
 		},
 		{
 			MethodName: "RemoveFriend",
-			Handler:    _UserService_RemoveFriend_Handler,
+			Handler:    _RelationService_RemoveFriend_Handler,
 		},
 		{
 			MethodName: "GetFriends",
-			Handler:    _UserService_GetFriends_Handler,
+			Handler:    _RelationService_GetFriends_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -16,7 +16,7 @@ import (
 type API struct {
 	server  *grpc.Server
 	storage Storage
-	rpbapi.UnimplementedUserServiceServer
+	rpbapi.UnimplementedRelationServiceServer
 }
 
 func New(storage Storage) (newAPI *API) {
@@ -29,7 +29,7 @@ func New(storage Storage) (newAPI *API) {
 		storage: storage,
 	}
 
-	rpbapi.RegisterUserServiceServer(newAPI.server, newAPI)
+	rpbapi.RegisterRelationServiceServer(newAPI.server, newAPI)
 
 	return newAPI
 }
