@@ -1,0 +1,47 @@
+version: '3.8'
+
+networks:
+  default-network:
+    driver: bridge
+
+services:
+
+  relation-service:
+    container_name: relation-service
+    depends_on:
+      relation-service-storage:
+        condition: service_healthy
+    build:
+      dockerfile: Dockerfile
+    environment:
+      - GRPC_HOST=0.0.0.0
+      - GRPC_PORT=4040
+      - LOG_LVL=info
+      - STORAGE_HOST=relation-service-storage
+      - STORAGE_PORT=7687
+      - STORAGE_USER=neo4j
+      - STORAGE_PASSWORD=password
+      - STORAGE_DB_NAME=neo4j
+    ports:
+      - "4040:4040"
+    networks:
+      - default-network
+
+  relation-service-storage:
+    image: neo4j:latest
+    container_name: relation-service-storage
+    healthcheck:
+      test: wget http://localhost:7474 || exit 1
+      interval: 1s
+      timeout: 10s
+      retries: 20
+      start_period: 3s
+    environment:
+      - NEO4J_AUTH=neo4j/password
+    expose:
+      - "7687"
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    networks:
+      - default-network
