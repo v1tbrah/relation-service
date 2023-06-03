@@ -6,6 +6,7 @@ import (
 
 	"github.com/neo4j/neo4j-go-driver/v5/neo4j/dbtype"
 	"github.com/pkg/errors"
+
 	"gitlab.com/pet-pr-social-network/relation-service/internal/model"
 )
 

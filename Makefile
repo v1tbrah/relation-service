@@ -1,5 +1,8 @@
-start:
+up:
 	docker-compose up -d
+
+down:
+	docker-compose down
 
 protogen:
 	go install google.golang.org/protobuf/cmd/protoc-gen-go

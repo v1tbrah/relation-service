@@ -8,25 +8,28 @@ import (
 
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"github.com/rs/zerolog/log"
-	"gitlab.com/pet-pr-social-network/relation-service/internal/config"
-	"gitlab.com/pet-pr-social-network/relation-service/rpbapi"
 	"google.golang.org/grpc"
+
+	"gitlab.com/pet-pr-social-network/relation-service/config"
+	"gitlab.com/pet-pr-social-network/relation-service/rpbapi"
 )
 
 type API struct {
-	server  *grpc.Server
-	storage Storage
+	server    *grpc.Server
+	storage   Storage
+	msgSender FriendMsgSender
 	rpbapi.UnimplementedRelationServiceServer
 }
 
-func New(storage Storage) (newAPI *API) {
+func New(storage Storage, msgSender FriendMsgSender) (newAPI *API) {
 	newAPI = &API{
 		server: grpc.NewServer(grpc.UnaryInterceptor(
 			grpc_middleware.ChainUnaryServer(
 				interceptorLog,
 			),
 		)),
-		storage: storage,
+		storage:   storage,
+		msgSender: msgSender,
 	}
 
 	rpbapi.RegisterRelationServiceServer(newAPI.server, newAPI)
