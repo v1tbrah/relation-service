@@ -4,11 +4,11 @@ import (
 	"context"
 
 	"github.com/rs/zerolog/log"
-	"gitlab.com/pet-pr-social-network/relation-service/rpbapi"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
 	"gitlab.com/pet-pr-social-network/relation-service/internal/model"
+	"gitlab.com/pet-pr-social-network/relation-service/rpbapi"
 )
 
 func (a *API) GetFriends(ctx context.Context, req *rpbapi.GetFriendsRequest) (*rpbapi.GetFriendsResponse, error) {
