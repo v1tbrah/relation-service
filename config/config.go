@@ -13,27 +13,27 @@ const (
 )
 
 type Config struct {
-	GRPCConfig    GRPCConfig
-	StorageConfig StorageConfig
-	KafkaConfig   KafkaConfig
-	LogLvl        zerolog.Level
+	GRPC    GRPC
+	Storage Storage
+	Kafka   Kafka
+	LogLvl  zerolog.Level
 }
 
 func NewDefaultConfig() Config {
 	return Config{
-		GRPCConfig:    newDefaultGRPCConfig(),
-		StorageConfig: newDefaultStorageConfig(),
-		KafkaConfig:   newDefaultKafkaConfig(),
-		LogLvl:        defaultLogLvl,
+		GRPC:    newDefaultGRPCConfig(),
+		Storage: newDefaultStorageConfig(),
+		Kafka:   newDefaultKafkaConfig(),
+		LogLvl:  defaultLogLvl,
 	}
 }
 
 func (c *Config) ParseEnv() error {
-	c.GRPCConfig.parseEnv()
+	c.GRPC.parseEnv()
 
-	c.StorageConfig.parseEnv()
+	c.Storage.parseEnv()
 
-	c.KafkaConfig.parseEnv()
+	c.Kafka.parseEnv()
 
 	if err := c.parseEnvLogLvl(); err != nil {
 		return err

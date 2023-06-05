@@ -1,7 +1,14 @@
-## User-service
+## Relation-service
 
-This is a simple service that can be used to create and manage users.
+This is a simple service that can be used to manage users' relations.
 
 ## Quick start with docker
-* exec `make start`
+* Start service:
+```sh
+make up
+```
 
+* Stop service:
+```sh
+make down
+```

@@ -17,7 +17,7 @@ const (
 	envNameStorageDBName   = "STORAGE_DB_NAME"
 )
 
-type StorageConfig struct {
+type Storage struct {
 	Host     string
 	Port     string
 	User     string
@@ -25,8 +25,8 @@ type StorageConfig struct {
 	DBName   string
 }
 
-func newDefaultStorageConfig() StorageConfig {
-	return StorageConfig{
+func newDefaultStorageConfig() Storage {
+	return Storage{
 		Host:     defaultStorageHost,
 		Port:     defaultStoragePort,
 		User:     defaultStorageUser,
@@ -35,7 +35,7 @@ func newDefaultStorageConfig() StorageConfig {
 	}
 }
 
-func (c *StorageConfig) parseEnv() {
+func (c *Storage) parseEnv() {
 	envHost := os.Getenv(envNameStorageHost)
 	if envHost != "" {
 		c.Host = envHost

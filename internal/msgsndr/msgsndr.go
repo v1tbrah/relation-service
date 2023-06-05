@@ -16,10 +16,10 @@ type Sender struct {
 	topicFriendAddedConn   *kafka.Conn
 	topicFriendRemovedConn *kafka.Conn
 
-	cfg config.KafkaConfig
+	cfg config.Kafka
 }
 
-func New(ctx context.Context, cfg config.KafkaConfig) (*Sender, error) {
+func New(ctx context.Context, cfg config.Kafka) (*Sender, error) {
 	if !cfg.Enable {
 		return nil, nil
 	}

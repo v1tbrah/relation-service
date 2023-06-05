@@ -19,7 +19,7 @@ const (
 	envNameTopicFriendRemoved = "TOPIC_FRIEND_REMOVED"
 )
 
-type KafkaConfig struct {
+type Kafka struct {
 	Enable bool
 
 	Host string
@@ -29,8 +29,8 @@ type KafkaConfig struct {
 	TopicFriendRemoved string
 }
 
-func newDefaultKafkaConfig() KafkaConfig {
-	return KafkaConfig{
+func newDefaultKafkaConfig() Kafka {
+	return Kafka{
 		Enable:             defaultKafkaEnable,
 		Host:               defaultKafkaHost,
 		Port:               defaultKafkaPort,
@@ -39,7 +39,7 @@ func newDefaultKafkaConfig() KafkaConfig {
 	}
 }
 
-func (c *KafkaConfig) parseEnv() {
+func (c *Kafka) parseEnv() {
 	envKafkaEnable := os.Getenv(envNameKafkaEnable)
 	if envKafkaEnable != "" {
 		c.Enable = envKafkaEnable == "true"
