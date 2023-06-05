@@ -2,6 +2,7 @@ package storage
 
 import (
 	"context"
+	"net"
 
 	"github.com/neo4j/neo4j-go-driver/v5/neo4j"
 	"github.com/pkg/errors"
@@ -12,15 +13,15 @@ import (
 type Storage struct {
 	dbSes neo4j.SessionWithContext
 
-	cfg config.StorageConfig
+	cfg config.Storage
 }
 
-func Init(cfg config.StorageConfig) (*Storage, error) {
+func Init(cfg config.Storage) (*Storage, error) {
 	newStorage := &Storage{cfg: cfg}
 
 	ctx := context.Background()
 	driver, err := neo4j.NewDriverWithContext(
-		"neo4j://"+cfg.Host+":"+cfg.Port,
+		"neo4j://"+net.JoinHostPort(cfg.Host, cfg.Port),
 		neo4j.BasicAuth(cfg.User, cfg.Password, ""),
 	)
 	if err != nil {
@@ -40,7 +41,7 @@ func Init(cfg config.StorageConfig) (*Storage, error) {
 
 func (s *Storage) Close(ctx context.Context) (err error) {
 	if err = s.dbSes.Close(ctx); err != nil {
-		return errors.Wrap(err, "close db session")
+		return errors.Wrap(err, "dbSes.Close")
 	}
 
 	return nil
