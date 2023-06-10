@@ -7,7 +7,7 @@ import (
 	"github.com/neo4j/neo4j-go-driver/v5/neo4j"
 	"github.com/pkg/errors"
 
-	"gitlab.com/pet-pr-social-network/relation-service/config"
+	"github.com/v1tbrah/relation-service/config"
 )
 
 type Storage struct {

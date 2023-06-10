@@ -3,7 +3,7 @@ package api
 import (
 	"context"
 
-	"gitlab.com/pet-pr-social-network/relation-service/internal/model"
+	"github.com/v1tbrah/relation-service/internal/model"
 )
 
 //go:generate mockery --name Storage

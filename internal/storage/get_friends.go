@@ -7,7 +7,7 @@ import (
 	"github.com/neo4j/neo4j-go-driver/v5/neo4j/dbtype"
 	"github.com/pkg/errors"
 
-	"gitlab.com/pet-pr-social-network/relation-service/internal/model"
+	"github.com/v1tbrah/relation-service/internal/model"
 )
 
 const getFriendsQueryTmpl = `MATCH (u1:User {id: $u1ID})-[:FRIEND]->(friends)`

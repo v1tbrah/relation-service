@@ -7,8 +7,8 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"gitlab.com/pet-pr-social-network/relation-service/internal/model"
-	"gitlab.com/pet-pr-social-network/relation-service/rpbapi"
+	"github.com/v1tbrah/relation-service/internal/model"
+	"github.com/v1tbrah/relation-service/rpbapi"
 )
 
 func (a *API) GetFriends(ctx context.Context, req *rpbapi.GetFriendsRequest) (*rpbapi.GetFriendsResponse, error) {

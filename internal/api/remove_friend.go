@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"gitlab.com/pet-pr-social-network/relation-service/rpbapi"
+	"github.com/v1tbrah/relation-service/rpbapi"
 )
 
 func (a *API) RemoveFriend(ctx context.Context, req *rpbapi.RemoveFriendRequest) (*rpbapi.Empty, error) {
