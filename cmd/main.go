@@ -10,10 +10,10 @@ import (
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 
-	"gitlab.com/pet-pr-social-network/relation-service/config"
-	"gitlab.com/pet-pr-social-network/relation-service/internal/api"
-	"gitlab.com/pet-pr-social-network/relation-service/internal/msgsndr"
-	"gitlab.com/pet-pr-social-network/relation-service/internal/storage"
+	"github.com/v1tbrah/relation-service/config"
+	"github.com/v1tbrah/relation-service/internal/api"
+	"github.com/v1tbrah/relation-service/internal/msgsndr"
+	"github.com/v1tbrah/relation-service/internal/storage"
 )
 
 func main() {
