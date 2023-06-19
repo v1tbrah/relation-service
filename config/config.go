@@ -14,6 +14,7 @@ const (
 
 type Config struct {
 	GRPC    GRPC
+	HTTP    HTTP
 	Storage Storage
 	Kafka   Kafka
 	LogLvl  zerolog.Level
@@ -22,6 +23,7 @@ type Config struct {
 func NewDefaultConfig() Config {
 	return Config{
 		GRPC:    newDefaultGRPCConfig(),
+		HTTP:    newDefaultHTTPConfig(),
 		Storage: newDefaultStorageConfig(),
 		Kafka:   newDefaultKafkaConfig(),
 		LogLvl:  defaultLogLvl,
@@ -30,6 +32,8 @@ func NewDefaultConfig() Config {
 
 func (c *Config) ParseEnv() error {
 	c.GRPC.parseEnv()
+
+	c.HTTP.parseEnv()
 
 	c.Storage.parseEnv()
 

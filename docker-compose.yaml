@@ -16,6 +16,8 @@ services:
     environment:
       - GRPC_HOST=0.0.0.0
       - GRPC_PORT=4040
+      - HTTP_HOST=0.0.0.0
+      - HTTP_PORT=4949
       - LOG_LVL=info
       - STORAGE_HOST=relation-service-storage
       - STORAGE_PORT=7687
@@ -26,6 +28,7 @@ services:
       - KAFKA_PORT=9092
     ports:
       - "4040:4040"
+      - "4949:4949"
     networks:
       - default-network
 
